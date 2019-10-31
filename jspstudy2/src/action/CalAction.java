@@ -19,7 +19,7 @@ public class CalAction implements Action {
 			}else if(op.equals("*")) {
 				result = num1 * num2;
 			}else if(op.equals("/")) {
-				result = num1 / num2;
+				request.setAttribute("result", (double)num1/num2);
 			}
 			request.setAttribute("result", result);
 		}catch(NumberFormatException e) {

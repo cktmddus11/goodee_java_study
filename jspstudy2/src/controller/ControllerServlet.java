@@ -46,7 +46,7 @@ public class ControllerServlet extends HttpServlet {
     		String command = (String)k;
     		String className = pr.getProperty(command);
     		try {
-    			Class commandClass = Class.forName(className);
+    			Class commandClass = Class.forName(className.trim());
     			// commandObj : action.HelloAction 按眉积己
     			Object commandObj = commandClass.newInstance(); // 流立按眉积纪?
     			commandMap.put(command, (Action) commandObj);
@@ -69,7 +69,7 @@ public class ControllerServlet extends HttpServlet {
 			action = commandMap.get(command);
 			forward = action.execute(request, response); // AddAction 府畔蔼咯扁肺 倒酒咳
 		}catch(NullPointerException e) {
-			throw new ServletException(e); // 咯扁 构救靖
+			forward = new ActionForward();
 		}catch(Exception e) {
 			throw new ServletException(e);
 		}
