@@ -1,4 +1,4 @@
-package model2;
+package model1;
 
 public class Member {
 	private String id;

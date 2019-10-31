@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.ActionForward;
-import model2.Member;
-import model2.MemberDao;
+import model1.Member;
+import model1.MemberDao;
 /*
  * 1. id, pass 파라미터 저장
  * 2. id 해당하는 정보를 db애서 조회

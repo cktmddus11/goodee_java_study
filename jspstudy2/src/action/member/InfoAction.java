@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.ActionForward;
-import model2.Member;
-import model2.MemberDao;
+import model1.Member;
+import model1.MemberDao;
 
 public class InfoAction extends UserLoginAction{
 

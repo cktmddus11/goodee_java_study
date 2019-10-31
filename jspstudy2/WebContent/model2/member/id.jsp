@@ -1,5 +1,5 @@
-<%@page import="model2.MemberDao"%>
-<%@page import="model2.Member"%>
+<%@page import="model1.MemberDao"%>
+<%@page import="model1.Member"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 	
