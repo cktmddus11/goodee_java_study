@@ -84,7 +84,7 @@ function win_updatepw(){
 			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" value="회원수정">
-				<c:if test="${info.id == 'admin'}">
+				<c:if test="${info.id != 'admin'}">
 					<input type="button" value="비밀번호 변경"  onclick="javascript:win_updatepw()"/>
 					</c:if>
 				</td>	

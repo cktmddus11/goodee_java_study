@@ -67,9 +67,11 @@ public class ControllerServlet extends HttpServlet {
 			// action : Action 인터페이스의 구현 객체
 			// 			action.HelloAction
 			action = commandMap.get(command);
+			System.out.println(command);
 			forward = action.execute(request, response); // AddAction 리턴값여기로 돌아옴
 		}catch(NullPointerException e) {
 			forward = new ActionForward();
+			//e.printStackTrace(); // 비어있는거들어오면 에러 출력? 비밀번호 수정눌렀을 때 그냥 나오던뎅..
 		}catch(Exception e) {
 			throw new ServletException(e);
 		}
