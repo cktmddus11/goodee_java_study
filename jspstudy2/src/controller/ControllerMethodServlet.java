@@ -67,6 +67,7 @@ public class ControllerMethodServlet extends HttpServlet {
 			// method : 메서드 객체 생성
 			// BoardAllAction 클래스중 메서드의 이름이 methodName이고
 			// 메개변수가 paramType 인 메서드를 객체로 리턴 
+			/* 널포인터 에러가 여기서 뜬다?*/
 			Method method = BoardAllAction.class.getMethod(methodName, paramType);
 			//  invoke : 메서드 호출 기능
 			// action = borderAction?     paramObjs : request, response 객체 
@@ -75,7 +76,7 @@ public class ControllerMethodServlet extends HttpServlet {
 			forward = (ActionForward) method.invoke(action, paramObjs);
 		}catch(NullPointerException e) {
 			forward = new ActionForward();
-			e.printStackTrace();
+			//e.printStackTrace();
 		}catch(Exception e) {
 			throw new ServletException(e);
 		}

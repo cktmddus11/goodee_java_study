@@ -22,7 +22,7 @@
  String uploadPath = application.getRealPath("/model1/board/")+"file/";
 MultipartRequest multi = new MultipartRequest(request, uploadPath, 10 *1024 * 1024, "euc-kr");
 board.setNum(Integer.parseInt(multi.getParameter("num")));
-board.setName(multi.getParameter("pass"));
+board.setName(multi.getParameter("name"));
 board.setPass(multi.getParameter("pass"));
 board.setSubject(multi.getParameter("subject"));
 board.setContent(multi.getParameter("content"));

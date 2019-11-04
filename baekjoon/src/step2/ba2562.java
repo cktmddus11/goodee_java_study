@@ -3,8 +3,7 @@ package step2;
 import java.util.Scanner;
 
 public class ba2562 {
-
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		int arr[] = new int[9];
 		int max = 0;
 		int idx = 0;
