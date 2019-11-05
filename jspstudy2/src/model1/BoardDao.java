@@ -54,13 +54,21 @@ public class BoardDao {
 		return false;
 	}
 	
-	public int boardCount() {
+	public int boardCount(String column, String find) {
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select count(*) from board";
 		
 		try {
+			String sql = "select count(*) from board";
+			if(column != null) { // find도 null이 아니면=> 두값이 있으면
+				String str[] = column.split(",");
+				sql += " where "+str[0]+" like '%"+find+"%'";
+				if(str.length == 2) {
+					sql += " || "+str[1]+" like '%"+find+"%'";
+				}
+			}
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rs.next();
@@ -73,14 +81,22 @@ public class BoardDao {
 		}
 		return 0;
 	}
-	public List<Board> list(int pageNum, int limit){
+	public List<Board> list(int pageNum, int limit, String column, String find){
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Board> list = new ArrayList<Board>();
-		String sql = "select *from board order by grp desc, "
-				+"grpstep asc limit ?, ?";
+		String sql = "select *from board ";
+		if(column != null) { // find도 null이 아니면=> 두값이 있으면
+			String str[] = column.split(",");
+			sql += " where "+str[0]+" like '%"+find+"%'";
+			if(str.length == 2) {
+				sql += " || "+str[1]+" like '%"+find+"%'";
+			}
+		}
+		 sql += " order by grp desc, grpstep asc limit ?, ?";
 		try {
+		
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,  (pageNum -1) * limit); //0이면 첫번째 레코드
 			pstmt.setInt(2,  limit);

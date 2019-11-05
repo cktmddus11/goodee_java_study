@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<script type="text/javascript" src= "http://cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>
 <title>게시판 글쓰기</title>
 <script>
 	function inputcheck(){
@@ -23,12 +24,13 @@
 			f.subject.focus(); 
 			return;
 		}
-		if(f.content.value==""){
+/* 		if(f.content.value==""){
 			alert("내용을 입력하세요.");
 			f.content.focus();
 			return;
 		}
-		f.submit();
+ */		
+ 		f.submit();
 	}
 </script>
 <link rel = "stylesheet" href="../../css/main.css">
@@ -51,8 +53,15 @@
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><textarea rows="15" name="content"></textarea></td>
+				<td><textarea rows="15" name="content" id="content1"></textarea></td>
 			</tr>
+			<script>
+				CKEDITOR.replace("content1", {
+					filebrowserImageUploadUrl : "imgupload.do"
+					//filebrowserImageUploadUrl : 이미지 업로드 설정
+					//imgupload.do ; 업로드를 위한 url지정 
+				});
+			</script>
 			<tr>
 				<td>첨부파일</td>
 				<td><input type="file" name="file1"></td>

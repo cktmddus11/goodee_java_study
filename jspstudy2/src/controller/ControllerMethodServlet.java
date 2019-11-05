@@ -64,6 +64,7 @@ public class ControllerMethodServlet extends HttpServlet {
 			command = request.getRequestURI().substring(request.getContextPath().length()); 
 			// methodName = hello 
 			String methodName = pr.getProperty(command); 
+			System.out.println(command + "," + methodName);
 			// method : 메서드 객체 생성
 			// BoardAllAction 클래스중 메서드의 이름이 methodName이고
 			// 메개변수가 paramType 인 메서드를 객체로 리턴 

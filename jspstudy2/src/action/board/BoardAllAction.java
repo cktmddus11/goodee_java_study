@@ -76,8 +76,21 @@ public class BoardAllAction {
 		try {
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		}catch(NumberFormatException e) {}
-		int boardcnt = dao.boardCount();
-		List<Board> list = dao.list(pageNum, limit);
+		
+		String column = request.getParameter("column");
+		String find = request.getParameter("find");
+		// 검색조건
+		if(column != null && column.trim().equals("")) { // 입력내용 띄어쓰기?
+			column = null;
+		}if(find != null && find.trim().equals("")) {
+			find = null;
+		}if(column == null || find == null) { // 두개다 있어야지 검색되게 
+			column = null;
+			find = null;
+		}
+
+		int boardcnt = dao.boardCount(column, find);
+		List<Board> list = dao.list(pageNum, limit, column, find);
 		
 		int maxpage = (int)((double) boardcnt / limit + 0.95);
 		int startpage = ((int)(pageNum / 10.0 + 0.9)-1) * 10 + 1;
@@ -86,8 +99,8 @@ public class BoardAllAction {
 			endpage = maxpage;
 		}
 		int boardnum = boardcnt - (pageNum -1) * limit;
-		
-		request.setAttribute("baordcnt", boardcnt);
+	
+		request.setAttribute("boardcnt", boardcnt);
 		request.setAttribute("list", list);
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("startpage",  startpage);
@@ -248,7 +261,19 @@ public class BoardAllAction {
 		
 		
 	}
-	
-	
+	/* CKEDITOR 에서 이미지를 게시판 내용에 추가하기*/
+	public ActionForward imgupload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String path = request.getServletContext().getRealPath("/")+
+				"model2/board/imgfile/";
+		File f = new File(path);
+		if(!f.exists()) f.mkdirs();
+		MultipartRequest multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "euc-kr");
+		// upload라는 이름으로 파일을 전달해줌 - 내부적인 파라미터 이름
+		String fileName = multi.getFilesystemName("upload");
+		request.setAttribute("fileName", fileName);
+		request.setAttribute("CKEditorFuncNum", request.getParameter("CKEditorFuncNum"));
+		return new ActionForward(false, "ckeditor.jsp");
+		
+	}
 	
 }

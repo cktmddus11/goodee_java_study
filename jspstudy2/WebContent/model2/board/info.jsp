@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%--
 1. num 파라미터 정보를 변수에 저장. 
 2. num을 이용하여 db에서 게시물 정보를 조회
@@ -31,7 +32,8 @@
 			<th>내용</th>
 			<td><table style="width:100%; height:250px;">
                <td style="border-width:0px; vertical-align:top; text-align:left">
-               ${b.content}
+              <%--  <c:out value="${b.content}"/> --%>
+              ${b.content}
           	 	</td>     
      		</table>
      		</td>

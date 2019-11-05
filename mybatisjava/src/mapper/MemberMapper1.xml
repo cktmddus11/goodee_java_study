@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+<!-- 
+ id 속성 : sql 구문을 구분하는 유일한 코드값. 중복되면 안됨
+resultType 속성 : sql 구문의 결과값을 리턴 자료형 
+			Member 객체 리턴 => 컬럼의 이름과, set 프로퍼티이름이 같은 경우 자동 저장됨 
+			=> mybatis가 알아서 setproperty 다 해줌 resultType 만 지정해주면
+parameterType 속성 : sql 구문에 전달되는 값의 자료형
+		여러개의 파라미터 전달시 map 을 이용해야 한다. 
+		#{key} : 자료형 의미 + 값. id = #{id} => id = 'admin'
+			 							num = #{num} => num = 11
+			 							문자열이면 작은따옴표 붙여주고 숫자면 없이 알아서
+		${key} : 값의 치환    id = '${id}' => id = 'admin'
+		대부분 #으로 하는데 like쓸때 $만 거의 씀 그래서 like할떄 작은따옴표 써야됨
+-->
+	<select id="count" resultType="int">
+		select count(*) from member
+	</select>
+	<select id="list" resultType="Member"> <!-- Member 객체에 저장 -->
+		select *from member
+	</select>	
+	<select id="selectid" resultType="Member" parameterType="String">
+	<!-- 프로퍼티 이름과 db이름이 다르면 별칭으로 지정해줌 -->
+		select * from member where id = #{value}
+	<!-- 	select id, pass pw, name, gender, tel, email, picture from member where id = #{value} -->
+	</select>
+	<select id="selectname" resultType="Member" parameterType="String">
+		select *from member where id like '%${value}%'
+	</select>
+	<select id="selectidname" resultType="Member" parameterType="map">
+		select *from member where name=#{name} and id=#{id}
+	</select> <!--  파라미터 타입은 데이터가 들어오는 내용을 Mao  -->
+	
+	
+	
+	
+</mapper>

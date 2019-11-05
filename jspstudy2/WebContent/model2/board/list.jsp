@@ -15,8 +15,35 @@
 <meta charset="EUC-KR">
 <title>게시글 목록 보기</title>
 <link rel = "stylesheet" href="../../css/main.css">
+<script>
+	function listdo(page){
+		document.sf.pageNum.value = page;
+		document.sf.submit(); //페이지 눌러도 검색창 파라미터 유지
+	}
+</script>
 </head>
 <body>
+<form action="list.do" method="post" name="sf">
+	<input type="hidden" name="pageNum" value="1">
+	<table>
+		<tr>
+			<td style="border-width : 0px;">
+			<select name="column">
+				<option value="">선택하세요</option>
+				<option value="subject">제목</option>
+				<option value="name">작성자</option>
+				<option value="content">내용</option>
+				<option value="subject,content">제목 + 내용</option>
+				<option value="name,content">작성자 + 내용</option>				
+			</select> 
+			<script type="text/javascript">document.sf.column.value = "${param.column}";</script>
+			<input type="text" name="find" value="${param.find}" style="width:50%;">
+			<input type="submit" value="검색"></td>
+		</tr>
+	</table>
+</form>
+
+
 	<table>
 		<caption>게시판 목록</caption>
 		<c:if test="${boardcnt == 0 }">
@@ -24,7 +51,7 @@
 				<td colspan="5">등록된 게시글이 없습니다.</td>
 			</tr>
 		</c:if>
-		<c:if test="${baordcnt > 0 }">
+		<c:if test="${boardcnt > 0 }">
 			<tr>
 				<td colspan="5" style="text-align : right"> 글 개수 : ${boardcnt} </td>
 			</tr>
@@ -83,7 +110,7 @@
 							[이전]
 						</c:if>
 						<c:if test="${pageNum > 1}">
-							<a href="list.do?pageNum =${pageNum-1}">[이전]</a>
+							<a href="javascript:listdo(${pageNum-1})">[이전]</a>
 						</c:if>
 						<!-- 번호-->
 						<c:forEach begin="${startpage}" end="${endpage}" var="a">
@@ -91,7 +118,7 @@
 									[${a}] 
 								</c:if>
 								<c:if test="${a != pageNum }">
-									<a href="list.do?pageNum=${a}">[${a}]</a>
+									<a href="javascript:listdo(${a})">[${a}]</a>
 								</c:if>
 						</c:forEach>
 						<!-- 다음 -->
@@ -99,7 +126,7 @@
 							[다음]
 						</c:if>
 						<c:if test="${pageNum < maxpage}">
-							<a href="list.do?pageNum=${pageNum + 1}">[다음]</a>
+							<a href="javascript:listdo(${pageNum + 1})">[다음]</a>
 						</c:if>
 					</td>
 				</tr> 
