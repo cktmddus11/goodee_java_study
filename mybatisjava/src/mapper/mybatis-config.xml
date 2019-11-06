@@ -8,6 +8,7 @@
 	<properties resource="mapper/mybatis.properties" />
 	<typeAliases> <!--  패키지 명 별명으로 사용할수있게 설정 -->
 		<typeAlias type="mapper.Member" alias="Member"/>
+		<typeAlias type="mybatisjava.Student" alias="Student"/>
 	</typeAliases>
 	<!-- db Connetion설정  -->
 	<environments default="development">
@@ -21,8 +22,11 @@
 			</dataSource>
 		</environment>
 	</environments>
-	<!-- 사용할 sql 환경을 읽어서  xnk -->
+	<!-- 사용할 sql 구문을 저장한 xml을 설정 -->
 	<mappers>
 		<mapper resource="mapper/MemberMapper1.xml"/>
+		<mapper resource="mapper/StudentMapper1.xml"/>
+		<mapper resource="mapper/StudentMapper2.xml"/>
+		<mapper resource="mapper/StudentMapper3.xml"/>
 	</mappers>
 </configuration>

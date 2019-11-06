@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="student2"> <!--  동적 쿼리 -->
+	<select id="select1" parameterType="map" resultType="Student">
+		select *from student
+		<where>
+			<if test="grade != null">
+				grade = #{grade}
+			</if>
+			<if test="studno != null">
+				studno = #{studno}
+			</if>
+			<if test="height != null">
+				height >= #{height}
+			</if>
+		</where>
+	</select>
+	<select id="select2" parameterType="map" resultType="Student">
+		select *from student 
+	<!-- 	<where> where로 겉을 묶으면 where안써도됨?-->
+		<choose>
+			<when test="grade != null and height != null">
+				where grade = #{grade} and height >= #{height}
+			</when>
+			<when test="grade != null">
+				where grade = #{grade}
+			</when>
+			<when test="height != null">
+				where height >= #{height}
+			</when>
+		</choose>
+<!-- 		</where> -->
+	</select>
+	<select id="select3" parameterType="map" resultType="Student">
+		select *From student
+		<trim prefix="where" prefixOverrides="AND || OR">
+			<if test="grade != null">and grade = #{grade}</if> 
+			<if test="height != null">and height >= #{height}</if> 
+			<if test="weight != null">and weight >= #{weight}</if>
+		</trim>
+	</select>
+	<!--  
+		grade = 1, height = 180
+			select *From student and grade = #{grade} and height = #{height}
+		prefix 앞부분에 where을 붙여러
+		prefixOverrides = 제일앞에 AND || OR가 있으면  prefix에있는 값으로 바꿔
+		=============
+		grade = 1 , height = null
+		select *From student
+				and grade = #{grade}
+		       and를 where로 바꿈
+		 	=============
+		 grade = null , height = 180
+		select *From student
+				and height = #{height}
+		       and를 where로 바꿈
+			=============
+		  grade = null , height = null
+		  select *From student 
+		  둘다 null이니까 trim 무시
+		 -->
+	<select id="select4" parameterType="map" resultType="Student">
+		select *From student
+		<if test="majors != null"> 
+			where ${column} in
+			<foreach collection="majors" item="m" separator=","
+							index="i" open="(" close=")">#{m}</foreach>
+		</if>
+	</select>	
+	<!-- 
+	여기서는 index 없어도됨 
+	majors : 101, 201, 301 
+	select *from student
+	where major1 = in (101, 201, 301)
+	
+	collection : List 객체의 key 이름
+	item : 한개의 요소값을 지정하는 변수 이름
+	separator : 요소사이의 표시되는 문자 지정
+	index : 인덱스 번호
+	open : 처음 시작될때 문자지정
+	-->
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
