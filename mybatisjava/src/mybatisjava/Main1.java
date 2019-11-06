@@ -33,7 +33,7 @@ public class Main1 {
 		
 		// Connction 에서 session 할당
 		SqlSession session = sqlMap.openSession();
-		// selectOne : 데이터르 ㄹ db부터 조회하기. 결과가 레코드가 1개인 경우
+		// selectOne : 데이터를 db부터 조회하기. 결과가 레코드가 1개인 경우
 		// member.count : sql 구문의 id속성값 
 		x = (Integer)session.selectOne("member.count");
 		System.out.println("member 테이블의 레코드 갯수 : "+x);
@@ -61,6 +61,9 @@ public class Main1 {
 		for(Member mem : list) {
 			System.out.println(mem);
 		}
+		
+		
+		
 	}
 
 }
