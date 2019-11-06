@@ -2,5 +2,4 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.StudentMapper3">
-
-</mapper>
+</mapper><!--  mapper.StudentMapper3 : 인터페이스가 있는지 검증  -->
