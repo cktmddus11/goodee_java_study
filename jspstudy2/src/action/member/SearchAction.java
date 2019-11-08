@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.ActionForward;
-import model1.MemberDao;
+import model.MemberDao;
 
 public class SearchAction implements Action {
 

@@ -33,7 +33,7 @@
  		f.submit();
 	}
 </script>
-<link rel = "stylesheet" href="../../css/main.css">
+<!-- <link rel = "stylesheet" href="../../css/main.css"> -->
 </head>
 <body>
 	<form action="write.do" method="post" enctype="multipart/form-data" name="f">

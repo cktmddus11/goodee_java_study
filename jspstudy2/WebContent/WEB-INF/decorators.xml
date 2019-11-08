@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<decorators defaultdir="/decorator">
+ 	<decorator name="main" page="decorator2.jsp">
+		<pattern>/model2/member/*</pattern>
+		<pattern>/model2/board/*</pattern>
+	</decorator> 
+	<!--  따로 갈때는 이렇게 하고 둘다 같은데로 할거면 위로  -->
+<!-- 	<decorator name="member" page="decorator.jsp">
+			<pattern>/model2/member/*</pattern>
+	</decorator>
+	<decorator name="board" page="decorator.jsp">
+			<pattern>/model2/board/*</pattern>
+	</decorator> -->
+	<excludes>
+		<pattern>/model2/member/picture*</pattern> <!--  저 경로에있는거 decorate 제외하는거 -->
+		<pattern>/model2/member/upload*</pattern>
+	</excludes>
+</decorators>

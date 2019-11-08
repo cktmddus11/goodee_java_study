@@ -67,7 +67,7 @@ public class ControllerServlet extends HttpServlet {
 			// action : Action 인터페이스의 구현 객체
 			// 			action.HelloAction
 			action = commandMap.get(command);
-			System.out.println(command);
+		//	System.out.println(command);
 			forward = action.execute(request, response); // AddAction 리턴값여기로 돌아옴
 		}catch(NullPointerException e) {
 			forward = new ActionForward();

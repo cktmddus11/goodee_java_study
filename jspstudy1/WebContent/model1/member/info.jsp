@@ -1,5 +1,5 @@
-<%@page import="model1.Member"%>
 <%@page import="model1.MemberDao"%>
+<%@page import="model1.Member"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%-- 1. id 파라미터 값을 조회 

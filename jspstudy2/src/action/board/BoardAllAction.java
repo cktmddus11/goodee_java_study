@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 
 import action.ActionForward;
-import model1.Board;
-import model1.BoardDao;
+//import model1.Board;
+//import model1.BoardDao;
 
+import model.Board;
+import model.BoardDao;
 public class BoardAllAction {
 	private BoardDao dao = new BoardDao();
 	public ActionForward hello(HttpServletRequest request, HttpServletResponse response) {

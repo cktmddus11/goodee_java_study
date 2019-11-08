@@ -1,6 +1,6 @@
-<%@page import="model1.BoardDao"%>
 <%@page import="java.io.File"%>
 <%@page import="model1.Board"%>
+<%@page import="model1.BoardDao"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>

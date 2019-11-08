@@ -9,4 +9,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!--  sitemesh 프레임워크 설정 
+  ControllerMethodServlet호출되기 전에 filter가 호출됨
+  
+  /WEB-INF/sitemesh.xml 설정파일 필요
+  
+  -->
+  <filter>
+  	<filter-name>sitemesh</filter-name>
+  	<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+  </filter>
+  <filter-mapping> <!--  링크 설정 -->
+  	<filter-name>sitemesh</filter-name> <!--  모든 요청시 sitemesh라는 filter 실행  -->
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

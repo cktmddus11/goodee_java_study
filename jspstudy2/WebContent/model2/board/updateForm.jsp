@@ -39,7 +39,14 @@ function file_delete(){
 				</tr>	
 				<tr>
 					<td>내용</td>
-					<td><textarea row="15" name="content">${b.content}</textarea></td>
+					<td><textarea row="15" name="content"  id="content1">${b.content}</textarea></td>
+					<script>
+				CKEDITOR.replace("content1", {
+					filebrowserImageUploadUrl : "imgupload.do"
+					//filebrowserImageUploadUrl : 이미지 업로드 설정
+					//imgupload.do ; 업로드를 위한 url지정 
+				});
+			</script>
 				</tr>	
 				<tr>
 					<td>첨부파일</td>

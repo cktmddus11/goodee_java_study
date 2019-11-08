@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.ActionForward;
-import model1.Member;
-import model1.MemberDao;
+import model.Member;
+import model.MemberDao;
 
 public class ListAction extends AdminLoginAction{
 

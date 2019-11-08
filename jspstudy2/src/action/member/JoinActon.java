@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.ActionForward;
-import model1.Member;
-import model1.MemberDao;
+import model.Member;
+import model.MemberDao;
 /* 
 1. 파라미터 정보를 Member 객체에 저장
 2. Member객체를 db에 추가하기
@@ -26,11 +26,11 @@ public class JoinActon implements Action{
 		mem.setEmail(request.getParameter("email"));
 		mem.setPicture(request.getParameter("picture"));
 		String msg = "회원가입 실패";
-		String url = "LoginForm.me";
+		String url = "loginForm.me";
 		MemberDao dao = new MemberDao();
 		if(dao.insert(mem) > 0) {
 			msg =  mem.getId()+"회원가입 성공";
-			url = "LoginForm.me";
+			url = "loginForm.me";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);

@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.ActionForward;
-import model1.Member;
-import model1.MemberDao;
+import model.Member;
+import model.MemberDao;
 
 /* 
  *     1. 로그아웃상태인 경우. 로그인 하세요. 메시지 출력 

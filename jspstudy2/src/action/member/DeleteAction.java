@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.ActionForward;
-import model1.Member;
-import model1.MemberDao;
+import model.Member;
+import model.MemberDao;
 /* 
  * 1. 로그아웃 상태 : 로그인하세요 메시지 출력, loginForm.jsp 페이지 이동 -- 상속받으면 알아서 해결
   2. 	로그인 상태 

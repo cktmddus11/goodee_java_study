@@ -1,5 +1,5 @@
-<%@page import="model1.Member"%>
 <%@page import="model1.MemberDao"%>
+<%@page import="model1.Member"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <!--  admin은 모두 수정가능 사용자는 자기 내용만 수정

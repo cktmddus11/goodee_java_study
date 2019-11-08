@@ -1,5 +1,5 @@
-<%@page import="model1.Member"%>
 <%@page import="model1.MemberDao"%>
+<%@page import="model1.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSetMetaData"%>

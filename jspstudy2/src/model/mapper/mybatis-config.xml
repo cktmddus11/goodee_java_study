@@ -5,10 +5,10 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--  국제 public, 개인 system 파일 구별 -->
 <configuration> <!--  루트  -->
-	<properties resource="mapper/mybatis.properties" />
+	<properties resource="model/mapper/mybatis.properties" />
 	<typeAliases> <!--  패키지 명 별명으로 사용할수있게 설정 -->
-		<typeAlias type="mapper.Member" alias="Member"/>
-		<typeAlias type="mybatisjava.Student" alias="Student"/>
+		<typeAlias type="model.Member" alias="Member"/> <!-- xml사용시 쓰는데 우린 인터페이스라서 필요없 -->
+		<typeAlias type="model.Board" alias="Board"/>
 	</typeAliases>
 	<!-- db Connetion설정  -->
 	<environments default="development">
@@ -22,13 +22,8 @@
 			</dataSource>
 		</environment>
 	</environments>
-	<!-- 사용할 sql 구문을 저장한 xml을 설정 -->
-	<mappers>
- 		<mapper resource="mapper/MemberMapper1.xml"/>
-		<mapper resource="mapper/StudentMapper1.xml"/>
-		<mapper resource="mapper/StudentMapper2.xml"/>
-		<mapper resource="mapper/StudentMapper3.xml"/>  <!--  xml접근해서 인터페이스 찾을 수있음 -->
-	<!-- 	<mapper resource="mapper.StudentMapper3"/>  --><!--  인터페이스로 접근할떄 -->
-		<package name="mapper" /> <!--  패키지 내의 인터페이스를 모두 접근 가능 -->
+	<!-- 사용할 sql 구문을 저장한 xml, interface을 설정 -->
+	<mappers> <!--  설정방법 3가지 -->
+ 		<package name="model.mapper"/>
 	</mappers>
 </configuration>
