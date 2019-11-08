@@ -17,6 +17,7 @@
 	href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
@@ -38,7 +39,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<div class="w3-bar w3-theme w3-top w3-right-align w3-large">
 			<c:if test="${sessionScope.login != null }">
 			${sessionScope.login}님이 로그인 하셨습니다
-			 <a href="${path}/model2/member/logout.me" >&nbsp;로그아웃</a>
+			 <a href="${path}/model2/member/logout.me">로그아웃</a>
 			</c:if>
 			<c:if test="${sessionScope.login == null }">
 				<a href="${path}/model2/member/loginForm.me">로그인</a>
@@ -73,7 +74,12 @@ html, body, h1, h2, h3, h4, h5, h6 {
 			<div class="w3-twothird w3-container">
 				 <decorator:body />
 			</div>
-			
+			<div class="w3-third w3-container">
+				<p class="w3-border w3-padding-large w3-padding-32 w3-center">
+				<img src="http://img.hani.co.kr/imgdb/resize/2018/0313/00500561_20180313.JPG" style="height: 50%;width: 50%;" ></p>
+				<p class="w3-border w3-padding-large w3-padding-32 w3-center">
+				<img src="http://img.hani.co.kr/imgdb/resize/2018/0313/00500561_20180313.JPG"style="height: 50%;width: 50%;"></p>
+			</div>
 		</div>
 
 		

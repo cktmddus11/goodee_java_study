@@ -1,9 +1,9 @@
-table{
+ table{
    width : 100%;
    border-collapse : collapse;
 }
 th, td{
-   border : 3px solid #bcbcbc;
+   border : 1px solid #bcbcbc;
    text-align : center;
    padding : 8px;
 }
@@ -13,7 +13,7 @@ th{
 }
 td{
    background-color : #F2F2F2;
-}
+}  
 caption{
    color : #111111;
    font-size : 20px;

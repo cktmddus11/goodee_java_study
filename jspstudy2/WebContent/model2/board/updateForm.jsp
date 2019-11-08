@@ -16,6 +16,7 @@ function file_delete(){
 }
 </script>
 <title>¼öÁ¤</title>
+<script type="text/javascript" src= "http://cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>
 </head>
 <body>
 	<form action="update.do" name = "f" method="post" 
