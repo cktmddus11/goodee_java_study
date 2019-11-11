@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<properties>
+	<property>
+		<title>홍길동전</title>
+		<name>허균</name>
+		<price>10000</price>
+	</property>
+	<property>
+		<title>자바의 정석</title>
+		<name>남궁성</name>
+		<price>28000</price>
+	</property>
+	<property>
+		<title>웹표준</title>
+		<name>댄 씨더홈</name>
+		<price>35000</price>
+	</property>
+	<property>
+		<title>춘향전</title>
+		<name>무명씨</name>
+		<price>15000</price>
+	</property>
+	<property>
+		<title>JSP</title>
+		<name>최범균</name>
+		<price>30000</price>
+	</property>
+	
+</properties>

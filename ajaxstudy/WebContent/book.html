@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>xml 연습</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function doXml(){
+		sendRequest("book.xml", null, parseXml, "GET");
+	}
+	function parseXml(){
+		if(ajax.readyState == 4){
+			if(ajax.status == 200){
+				listAll();
+			}else{
+				alert("서버 오류 : "+ajax.status);
+			}
+		}
+	}
+	function listAll(){
+		var xmlDoc = ajax.responseXML;
+		var allp = xmlDoc.getElementsByTagName("property");
+		
+		var divC = document.getElementById("content");
+
+		var htmldata = "<table border='1'><tr><th>제목</th><th>저자</th><th>가격</th></tr>";
+		var sum = 0;
+		for(var i = 0;i<allp.length;i++){  // 3
+			var title = allp[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+			var name =allp[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			var price = allp[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+			htmldata += "<tr><td>"+title+"</td><td>"+name+"</td><td>"+price+"</td></tr>"
+			sum +=  Number(price);
+		}
+		htmldata += "<tr><td colspan='3' align='center'>책 갯수 : "+allp.length+"권, 총가격 "+sum+" </td></table>"
+		divC.innerHTML += "<h1>XML 주택 정보</h1>"
+		divC.innerHTML += htmldata
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="xml 분석하기" onclick ="doXml()">
+	<div id="content"></div>
+</body>
+</html>
