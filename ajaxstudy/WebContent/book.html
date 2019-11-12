@@ -22,7 +22,9 @@
 		var allp = xmlDoc.getElementsByTagName("property");
 		
 		var divC = document.getElementById("content");
-
+		// getElementsByTagName ( "title") [0] -첫 번째 <title> 요소를 가져옵니다
+		//childNodes [0] -<title> 요소의 첫 번째 자식 (텍스트 노드)
+		//nodeValue- 노드의 값 (텍스트 자체)
 		var htmldata = "<table border='1'><tr><th>제목</th><th>저자</th><th>가격</th></tr>";
 		var sum = 0;
 		for(var i = 0;i<allp.length;i++){  // 3
@@ -33,7 +35,7 @@
 			sum +=  Number(price);
 		}
 		htmldata += "<tr><td colspan='3' align='center'>책 갯수 : "+allp.length+"권, 총가격 "+sum+" </td></table>"
-		divC.innerHTML += "<h1>XML 주택 정보</h1>"
+		divC.innerHTML += "<h1>책 정보 보기</h1>"
 		divC.innerHTML += htmldata
 	}
 </script>

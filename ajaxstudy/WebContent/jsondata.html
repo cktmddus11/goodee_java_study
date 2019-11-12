@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>json 데이터 연습</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function resultView(){
+		if(ajax.readyState == 4){
+			if(ajax.status == 200){
+				jsonView(ajax.responseText); // json 부분만 보내줌
+			}else{
+				alert("서버오류 : "+ajax.status);
+			}
+		}
+	}
+	function jsonView(jsondata){
+		editdata = "<br><table border='1'>"
+			+"<tr><th>우편번호</th><th>읍면동</th><th>주소</th></tr>";
+			//var data = eval("("+jsondata+")"); // json 형태의 문자열을 json 객체 생성
+			var data = JSON.parse(jsondata); // 이걸로 하면 json 문자열로 해야함 " "
+			for(var i = 0;i<data.ZIP.length;i++){
+				var code = data.ZIP[i].zipcode;
+				var dong = data.ZIP[i].dong;
+				var addr = data.ZIP[i].addr;
+				editdata += "<tr><td>"+code+"</td><td>"+dong+"</td><td>"+addr+"</td></tr>"
+			}
+			editdata += "</table>";
+			result.innerHTML = editdata;
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="우편번호"
+	 onclick="sendRequest('jsondata.jsp', null, resultView, 'GET')"><br>
+	<div id="result"></div>
+</body>
+</html>
