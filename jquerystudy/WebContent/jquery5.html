@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>위치 관련 필터 선택자 : nth-child()</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript"> 
+// tr 태그중 3으로 나눈 나머지가 1번째 위치 바탕색을 하늘색
+// tr 태그중 3으로 나눈 나머지가 2번째 위치 바탕색을 노랑색
+// tr 태그중 3으로 나눈 나머지가 0번째 위치 바타색을 분홍색
+$(function(){
+	$("tr:nth-child(3n+1)").css("background", "skyblue");
+	$("tr:nth-child(3n+2)").css("background", "yellow");
+	$("tr:nth-child(3n)").css("background", "pink");
+	
+	// 첫번째 tr 태그는 검정 바탕에 노랑 글씨로 변경
+	$("tr:eq(0)").css("background", "black").css("color", "yellow");
+	// 세번째 tr 태그의 글자색을 흰색으로 설정
+	$("tr:eq(2)").css("color", "white")
+	
+})
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>이름</th> <!--  인덱스 0부터 시작  -->
+			<th>혈액형</th>
+			<th>지역</th>
+		</tr>
+		<tr>
+			<td>홍길동</td>
+			<td>O형</td>
+			<td>서울</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>A형</td>
+			<td>남원</td>
+		</tr>
+		<tr>
+			<td>임꺽정</td>
+			<td>B형</td>
+			<td>전주</td>
+		</tr>
+		<tr>
+			<td>김삿갓</td>
+			<td>AB형</td>
+			<td>하남</td>
+		</tr>
+		<tr>
+			<td>차승연</td>
+			<td>A형</td>
+			<td>서울</td>
+		</tr>
+		<tr>
+			<td>성춘향</td>
+			<td>B형</td>
+			<td>하남</td>
+		</tr>
+				
+	</table>
+</body>
+</html>

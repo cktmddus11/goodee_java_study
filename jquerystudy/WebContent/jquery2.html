@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jquery 예제2 : 선택자 예제</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript"> 
+// 순서대로 코드를 진행하기 때문에 문서가 다 로드되고 아래 Jquery 구문이 실행되라고 
+// docuemnt.ready 해줘야함
+$(document).ready(function(){
+	// 순서중요?
+	$(".item").css("color", "blue");
+	$(".select").css("color", "yellow");
+	$(".item.select").css("color", "green");
+	$("ul").css("color", "red");
+	// > 바로 밑에 태그. div 바로 자식에 ul태그 있는 것만 바꿔
+	//  div 여기 ul  뭐 있어도 상관없음 다 적용됨 , div하위에 ul있으면 다 바꿔
+	$("div >ul").css("color", "pink");
+//	$("div ul").css("color", "pink");
+	
+});
+</script>
+</head>
+<body>
+	class 속성이 item 인 태그의 글자색을 파란색으로
+	<br> class 속성이 select 인 태그의 글자색을 노란색으로
+	<br> class 속성이 item select 인 태그의 글자색을 초록색으로
+	<br>
+	<h1 class="item">h1태그, class속성이 item</h1>
+	<h1 class="item select">h1태그, class속성이 item select</h1>
+	<h1 class="select">h1태그, class속성이 select</h1>
+
+	<hr>
+	<!-- ul 태그의 글자색을 빨강색으로 설정
+	div 하위 ul 태그의 글자색을 분홍색으로 설정 -->
+	<div>
+		<ul>
+			<li>사과</li>
+			<li>복숭아</li>
+			<li>감</li>
+			<li>참외</li>
+		</ul>
+	</div>
+	<div>
+		<span>
+			<ul>
+				<li>사과</li>
+				<li>복숭아</li>
+				<li>감</li>
+				<li>참외</li>
+			</ul>
+		</span>
+	</div>
+	<ul>
+		<li>사과</li>
+		<li>복숭아</li>
+		<li>감</li>
+		<li>참외</li>
+	</ul>
+
+	<hr>
+	input 태그 중 type 속성값이 text인 태그의 value속성에 
+	hello jquery 문자 추가하기 
+	<input type="text">
+	<script type="text/javascript">
+	$("input[type=text]").val("hello jquery")
+	// type속성이 input 태그의 value값을 alert 창에 띄어주기
+	//alert($("input[type=text]").val())
+	// input 태그의 type 속성이 te로 시작하는 태그의 색상을 blue로 변경하기
+	$("input[type^=te]").css("color", "blue");
+	// input 태그의 type 속성이 xe로 끝나는 태그의 색상을 blue로 변경하기
+	$("input[type$=xt]").css("color", "yellow");
+	</script>
+	<hr>
+	input 태그 중 type속성값이 버튼인 태그의 value 속성에
+	등록 문자 변경하기 <br>
+	<input type="button" value="취소"> 
+	<script type="text/javascript">
+	$("input[type=button]").val("등록");
+	</script>
+	
+	<hr>
+	input 태그의 radio, checkbox 를 선택하기<br>
+	<input type="radio">라디오버튼
+	<input type="checkbox">선택박스<br>
+	<script type="text/javascript">
+	//$("input[type=radio]").attr("checked", "checked"); // attr : setAttribute checked 속성 추가하기
+	//$("input[type=checkbox]").attr("checked", "checked");
+	
+	$("input:radio").attr("checked", "checked"); // attr : setAttribute checked 속성 추가하기
+	$("input:checkbox").attr("checked", "checked");
+	
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

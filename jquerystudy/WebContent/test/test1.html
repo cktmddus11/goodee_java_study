@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>20191112 문제1</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("h3:odd").css("background", "yellow").css("color", "blue");
+	$("h3:even").css("background", "black").css("color", "yellow");
+	
+ 	 // 2, 5, 8, 11
+	$("h2:nth-child(3n+2)").css("background", "yellow").css("color", "blue"); // 3배수의 나머지가1
+	//  1, 4 ,  (7, 10)
+	$("h2:nth-child(3n+1)").css("background", "black").css("color", "white"); // 3의 배수
+	
+	
+	$("h1:eq(0)").css("background", "pink").css("color", "red");
+	$("h1:eq(1)").css("background", "pink").css("color", "orange");
+	$("h1:eq(2)").css("background", "pink").css("color", "yellow");
+	$("h1:eq(3)").css("background", "pink").css("color", "green");
+	$("h1:eq(4)").css("background", "pink").css("color", "blue");
+	$("h1:eq(5)").css("background", "pink").css("color", "navy");
+	
+	
+})
+</script>
+</head>
+<body>
+h3태그 중 홀수번째를 노랑바탕에 파란글씨로, 짝수번째를 검정바탕에 노랑글씨로 변경
+<h3>H3:Header_0</h3><h3>H3:Header_1</h3><h3>H3:Header_2</h3>
+<h3>H3:Header_3</h3><h3>H3:Header_4</h3><h3>H3:Header_5</h3>
+<hr>
+h2 태그 중 3의 배수인 경우 검정 바탕에 흰글씨로, 3배수의 나머지가 1 경우 노랑 바탕에 파랑글씨로 설정하기 
+<h2>H2:Header_0</h2><h2>H2:Header_1</h2><h2>H2:Header_2</h2>
+<h2>H2:Header_3</h2><h2>H2:Header_4</h2><h2>H2:Header_5</h2>
+<hr>
+h1 태그의 색상을 분홍 바탕에 첫번째는 빨강, 두번째 오렌지, 세번째 노랑, 네번째 초록, 다섯번째 파랑, 여섯번째 남색으로 설정하기  
+<h1>H1:Header_0</h1><h1>H1:Header_1</h1><h1>H1:Header_2</h1>
+<h1>H1:Header_3</h1><h1>H1:Header_4</h1><h1>H1:Header_5</h1>
+</body>
+</html>
