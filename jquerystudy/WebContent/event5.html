@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>기본으로 발생되는 이벤트를 무시하기</title>
+<style type="text/css">
+	*{
+	margin : 5px; 
+	padding : 5px;
+	border : 3px solid black;
+	}
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("a").click(function(event){ // a 클릭해도 h1에도 파란색이 적용됨 
+		$(this).css("background-color", "blue")
+		//event.stopPropagation(); // 내 상위 태그에는 적용하지마 
+		//event.preventDefault(); // 기본으로 설정된 이벤트 취소
+		return false; // 위 두가지를 한번에..
+	})
+	$("h1").click(function() {
+		$(this).css("background-color", "red");
+	})
+})
+</script>
+</head>
+<body>
+	<h1><a href="http://www.goodee.co.kr">구디아카데미</a></h1>
+	<h1>Header 1</h1>
+</body>
+</html>

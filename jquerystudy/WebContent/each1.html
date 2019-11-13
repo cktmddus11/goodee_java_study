@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>배열객체, each 함수 예제</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){// 배열 안에 json형식?
+		
+	// $.each() : 배열 객제 둘다 가능	
+	var arr = [{name : "구디", link : "http://www.goodee.co.kr"},
+					{name : "다음", link : "http://www.daum.net"},
+					{name : "네이버", link : "http://www.naver.com"},
+					{name : "구글", link : "http://www.google.com"}]
+	
+	var output = "";
+	// index : 배열 인덱스, item : 요소
+	// index = 0, item = {name : "구디", link : "http://www.goodee.co.kr"}
+	$.each(arr, function(index, item){
+		output += "<a href='"+item.link+"'>"
+		output += "<h3>"+(index+1)+"."+item.name+"</h3></a>"
+	})
+	console.log(output);
+	$("#arr").html(output);
+	
+	
+	var obj = {name : "홍길동", gender : "남자"}
+	output = "";
+	// 멤버 추가 obj객체에 값을 추가할거야
+	$.extend(obj, {part : "의적", log : "율도국"})
+
+	// 객체 한개 대입
+	$.each(obj, function(key, value){
+		output += key +":"+value+"<br>";
+	})
+	$("#obj").html(output) // arr.innerHTML = output 과 동일
+	
+	
+})
+</script>
+</head>
+<body>
+	<div id = "arr">
+	
+	</div>
+	<div id = "obj">
+	
+	</div>
+</body>
+</html>

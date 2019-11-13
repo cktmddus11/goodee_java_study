@@ -10,19 +10,38 @@ $(function(){
 	$("h3:odd").css("background", "yellow").css("color", "blue");
 	$("h3:even").css("background", "black").css("color", "yellow");
 	
- 	 // 2, 5, 8, 11
+/*// h1에 있는거부터 0으로? 
+// 2, 5, 8, 11
 	$("h2:nth-child(3n+2)").css("background", "yellow").css("color", "blue"); // 3배수의 나머지가1
 	//  1, 4 ,  (7, 10)
-	$("h2:nth-child(3n+1)").css("background", "black").css("color", "white"); // 3의 배수
+	$("h2:nth-child(3n+1)").css("background", "black").css("color", "white"); // 3의 배수 */
 	
+	// h2부터?
+	$("h2:nth-of-type(3n)").css("background", "yellow").css("color", "blue"); 
+	$("h2:nth-of-type(3n+1)").css("background", "black").css("color", "yellow"); 
 	
-	$("h1:eq(0)").css("background", "pink").css("color", "red");
+/* 	$("h1:eq(0)").css("background", "pink").css("color", "red");
 	$("h1:eq(1)").css("background", "pink").css("color", "orange");
 	$("h1:eq(2)").css("background", "pink").css("color", "yellow");
 	$("h1:eq(3)").css("background", "pink").css("color", "green");
 	$("h1:eq(4)").css("background", "pink").css("color", "blue");
 	$("h1:eq(5)").css("background", "pink").css("color", "navy");
-	
+	 */
+	 
+	 // 자바스크립트 배열로 color 색 저장
+	 var colors = ["red", "orange", "yellow", "green", "blue", "navy"]
+	 // $("h1") : document.getElementsByTagName("h1") -> 배열
+	 $("h1").each(function(i, item){ 
+		 // 배열 요소 한개한개 가져오면서 반복
+		$(this).css({"background":"black", "color":colors[i]}); 
+	 });
+	 
+	 
+	 // colors : 매개변수로 배열을 전달
+	 // i : index, color : 해당 인덱스에 해당하는 값 
+	 $.each(colors, function(i, color){ 
+		 $("h1:eq("+i+")").css({"background":"pink", "color":color});
+	 })
 	
 })
 </script>

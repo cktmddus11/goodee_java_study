@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>html 함수 예제 : text 함수와 비교</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//$("div").html("<h1>Header</h1>") // html 은 태그를 파싱해서 html로 인식
+		$("div").text("<h1>Header</h1>") // text는 태그를 문자로 받아서 태그 그대로 출력함
+		// div 태그에 h1 태그 추가하기 index 추가
+		$("div").html(function(index){
+			return "<h1>Header -"+index+"</h1>"
+		})
+		
+	})
+</script>
+</head>
+<body>
+	<div></div><div></div><div></div>
+</body>
+</html>

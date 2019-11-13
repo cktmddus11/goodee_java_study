@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>style 를 담당하는 css함수 예제</title>
+<style type="text/css">
+	.first{color : #d6b2b8; }
+	.second {color : #9dab8e;}
+	.third {color : ; }
+</style>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){    // h1은 배열의 값인데 자바스크립트는 제일 먼저값으로 해줌
+		var color = $("h1").css("color")
+		alert(color);
+		color = $(".second").css("color")
+		alert(color);
+		color = $(".third").css("color")
+		alert(color);
+	})
+
+</script>
+</head>
+<body>
+		<h1 class ="first">Header-0 </h1>
+		<h1 class ="second">Header-1 </h1>
+		<h1 class ="third">Header-2 </h1>
+				
+</body>
+</html>

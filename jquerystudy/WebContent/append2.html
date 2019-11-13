@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>DIV 태그에 내용 추가하기</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var info = [
+		{name : "홍길동", address : "서울시 강서구"},
+		{name :'차승연', address : "서울시 은평구"},
+		{name : "이몽룡", address : "서울시 금천구"}
+	]
+	//                                index : div인덱스 0
+	$("div").append(function(index){
+		var item = info[index];
+		var output = ""
+		output += "<h1>"+item.name+"</h1>"
+		output += "<h2>"+item.address+"</h2>"
+		return output;
+	})
+})
+</script>
+</head>
+<body><!-- 0            1             2 -->
+		<div></div><div></div><div></div>
+</body>
+</html>

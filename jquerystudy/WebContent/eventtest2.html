@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript"> 
+$(function(){
+/* 	$("input[type='submit']").click(function(){
+		alert($("#name").val()+"\n"+$("#password").val());
+		return false;
+		// event.preventDefault()
+	}) */
+/* 	$("input:submit").click(function(){
+		alert($("#name").val()+"\n"+$("#password").val());
+		return false;
+	})  */
+	// from 객체에 submit 이벤트 발생시, submit 버튼 클릭된 경우 
+	$("#myform").submit(function(event){
+		alert($("#name").val()+"\n"+$("#password").val());
+		event.preventDefault();
+	});
+
+});
+</script>
+</head>
+<body>
+제출버튼이 클릭되면 입력된 이름과 비밀번호를 alert창에 출력하기
+<br>단 입력된 내용을 남아 있도록 하기  
+	<form id="myform">
+		이름 : <input type="text" name="name" id="name">
+		비밀번호 : <input type="password" name="password" id="password"><br>
+		<input type="submit" value="제출">
+	</form>
+</body>
+</html>

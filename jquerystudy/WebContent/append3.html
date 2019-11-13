@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 위치 변경하기</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("img").css("width", 250);
+		// setInterval : 2초마다 함수를 호출
+		// setTimeout : 2초후에 함번 호출
+		//$("img").first() : 첫번째 이미지
+		setInterval(function(){
+			$("img").first().appendTo("body"); // 첫번째 사진이 body로 추가되니까
+			// 뒤로 밀려남 
+		}, 2000)
+	})
+</script>
+</head>
+<body>
+<img src="goboogi2.jpg">
+	<img src="choobee.jpg">
+		<img src = "goboogi.jpg">
+</body>
+</html>
