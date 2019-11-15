@@ -7,13 +7,18 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	var a = 0;
+	/* var a = 0;
 	$("div").click(function(){ // div 
 		$(this).html(function(index, html){
 			a++;
 			return html+"<h1>"+a+"- Header</h1>"
 		})
-	})
+	}) */
+	$("h1").click(function(){
+		var len = $("h1").length; // <h1> ÅÂ±× °¹¼ö
+		var thtml = $(this).html();
+		$("#wrap").append("<h1>"+len+"-"+thtml+"</h1>");
+	});
 });
 </script>
 </head>

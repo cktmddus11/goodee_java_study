@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+th {
+	background-color : #000;
+	color : #fff;
+}
+.reverse {background : skyblue}
+.hover {background : pink}
+</style>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+/* 	$("tr").mouseover(function(){
+		$(this).css("background", "skyblue")
+	})
+	$("tr").mouseout(function(){
+		$(this).css("background", "white")
+	}) */
+	$("tr").hover(function(){ // 처음 콜백함수가 mouseover,
+		// 두번째가 mouseout
+		//	$(this).css("background", "skyblue") 
+		
+		// is() 함수 : 조건값을 리턴
+		// $(this).is(".header") : 이벤트 발생된 tr 태그의 class 속성이 header ?
+		//.reverse {background : skyblue} // .header이 아닌것만 reverse클래스 추가
+			/* 
+			$(this) : 선택된 tr태그
+			$(this).parent() : table(tbody, thead) 태그 
+									  선택된 tr의 부모태그
+			$(this).parent().children() : table 태그의 하위 태그들
+			$(this).parent().children(),index(this)  : table 태그의 하위 태그 들 
+								중 this 인덱스값 리턴
+			$(this).parent().children(),index(this) : this가 table 의 첫번째 tr태그가 
+			아닌경우                             여기 this는 나 자신
+			*/
+		if($(this).parent().children().index(this) != 0){
+			$(this).addClass("reverse");
+		}
+	}, function(){
+		//$(this).css("background", "white") 
+		$(this).removeClass("reverse")
+	})
+	$("th").hover(function(){
+		// 선택한 컬럼의 부모 tr의 자식들 길이 4 
+		//(tdlen : 1개의 tr태그의 하위 th 태그의 갯수 == td 갯수, 4)
+		var tdlen = $(this).parent().children().length; 
+		//          선택한 컬럼의 부모 tr의 자식들 인덱스(자신)
+		// this 의 index + 1
+		select = $(this).parent().children().index(this)+1;   // 인덱스 0부터 시작이니까
+		$("td:nth-child("+tdlen+"n"+select+")").addClass("hover")
+		//                       4n + 4 td 같은 형제 요소 
+	}, function(){
+		var tdlen = $(this).parent().children().length;
+		select = $(this).parent().children().index(this)+1;
+		$("td:nth-of-type("+tdlen+"n"+select+")").removeClass("hover");
+	});
+	
+	
+	
+})
+</script>
+</head>
+<body>
+	<table border="1" style="border : 2px solid; border-collapse : collapse">
+	<tr class = "header">
+		<th>이름</th>
+		<th>혈액형</th>
+		<th>지역</th>
+		<th>성별</th>
+	</tr>
+	<tr>
+		<td>강민</td>
+		<td>AB형</td>
+		<td>서울</td>
+		<td>남자</td>
+	</tr>
+	<tr>
+		<td>강민</td>
+		<td>AB형</td>
+		<td>서울</td>
+		<td>남자</td>
+	</tr>
+	<tr>
+		<td>강민</td>
+		<td>AB형</td>
+		<td>서울</td>
+		<td>남자</td>
+	</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	*{ margin : 0px; padding : 0px; }
+	.animation_canvas { /* 이미지 한개의 영역만 보여줌 */
+		overflow : hidden; /* 캔버스 영역외부 내용을 보여주지 않음 */
+		padding : 0px;
+		width : 600px; height : 400px; /* 영역 제한 */
+	}
+	/* 이미지 5개가 보여지는 영역 */
+	.slider_panel{ width : 3000px; position : relative; } /* 이미지 영역이 이래도 animation_canvas로 영역이 제한됨*/
+	/* 이미지가 한개 보여지는 영역 */
+	.slider_image{float : left; width : 600px; height : 400px; }
+	/* 설명을 보여주는 영역 */
+	.slider_text_panel{
+		position : absolute; 
+		top : 100px; left : 50px;
+	}
+	/* 설명의 내용 */
+	.slider_text{position : absolute; width : 250px; height : 150px; }
+	/* 선택 버튼의 영역 */
+	.control_panel{position : absolute; top : 380px; left : 270px; 
+	height : 13px; overflow : hidden; } /* 버튼이미지 영역을 넘어가면 안보이게*/
+	/*버튼 선택 이미지 */
+	.control_button{width : 12px; height : 46px; position : relative; 
+			float : left; cursor : pointer; background : url('point_button.png');
+	}
+	.control_button:hover{top : -16px;} 
+	/* 
+		0 -> 여기가 화면에 보이다가
+		--- 
+		O -> 마우스 갖다대면 top : -16px로 두번째 버튼부분이 보이게 됨(-15로 하면 제자리, -16으로 해서 살짝 오라가게 함)
+		O -> 클릭하면 -31px로 3번째버튼만이 보이게됨
+	*/
+	.control_button.select {top : -31px;} 
+</style>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 버튼들 이벤트 종료 + idx 속성 등록
+		$('.control_button').each(function(index){ 
+			$(this).attr("idx", index);
+		}).click(function(){	
+			// $(this).attr('idx') : 클릭된 컴포넌트의 idx 속성값. 0 ~ 4 
+			var index = $(this).attr('idx'); //선택한 버튼 속성중에 idx값을 index에 넣
+			moveSlider(index);
+		})
+		// 화면이 로드된 경우. 시작화면
+		//$('.slider_text').hide(); // 텍스트를 보이지 않도록 설정 
+		$('.slider_text').css("left", -300).each(function(index){
+			$(this).attr("idx", index);
+		})
+		moveSlider(0); // 첫번째 이미지가 화면에 출력
+		var idx = 0;
+		var inct = 1;
+		 setInterval(function(){
+			if(idx >= 4) inc = -1;
+			if(idx <= 0) inc = 1;
+			idx+= inc;
+			moveSlider(idx);
+		}, 2000) 
+	})
+	function moveSlider(index){
+		var moveLeft = -(index * 600);
+		$('.slider_panel').animate({left : moveLeft}, 'slow');
+		$('.control_button[idx='+index+']').addClass('select');
+		$('.control_button[idx !='+index+']').removeClass('select');
+		$('.slider_text[idx='+index+']').show().animate({
+			left : 0
+		}, 'slow');
+		$('.slider_text[idx !='+index+']').hide('slow', function(){
+			$(this).css('left', -300);
+		})
+	}
+</script>
+</head>
+<body>
+	<h1>슬라이드 이미지 구현하기</h1>
+	<div class="animation_canvas">
+		<div class="slider_panel">
+			<img src="goboogi.jpg" class="slider_image">
+			<img src="goboogi2.jpg" class="slider_image">
+			<img src="choobee.jpg" class="slider_image">
+			<img src="choobee2.png" class="slider_image">
+			<img src="chgobi.png" class="slider_image">				
+		</div>
+		<div class="slider_text_panel">
+			<div class="slider_text"> <!--idx="0" -->
+				<h1>상자 꼬부기 이미지<p>상자 꼬북</p></h1>
+			</div>
+			<div class="slider_text"> <!-- idx="1"-->
+				<h1>서있는 꼬부기 이미지<p>꼬북</p></h1>
+			</div>
+			<div class="slider_text"> <!-- idx="2" -->
+				<h1>쵸비 이미지<p>쵸비</p></h1>
+			</div>
+			<div class="slider_text"><!-- idx="3" -->
+				<h1>쵸비 이미지2<p>쵸비 </p></h1>
+			</div>
+			<div class="slider_text"><!-- idx="4"-->
+				<h1>꼬부기 and 쵸비 이미지<p>쵸꼬비</p></h1>
+			</div>
+		</div>
+		<div class="control_panel">
+			<div class="control_button" idx="0"></div>
+			<div class="control_button" idx="1"></div>
+			<div class="control_button" idx="2"></div>
+			<div class="control_button" idx="3"></div>
+			<div class="control_button" idx="4"></div>
+		</div>
+	</div>
+</body>
+</html>

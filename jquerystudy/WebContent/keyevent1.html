@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>key event 예제</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var num1 = $("h1").text();
+	/* 
+	 key 이벤트 : 키보드에서 문자가 입력된 경우
+	 keydown : 키가 눌려질때, 누르고 있을때 한번만 실행됨
+	 keypress : 키를 누르고 있는 상태, 누르고 있을 때 계속 실행됨
+	 keyup : 키에서 손 땔 때
+	*/
+	$("textarea").keyup(function(){ 
+		var num2 = num1 - $("textarea").val().length; // 100 - 입력한 문자 길이 = 남은 글자수
+		if(num2 < 0){
+			//$("h1").css({"color" : "red"});
+			$("h1").css("color","red");
+		}else{
+			$("h1").css("color","black");
+		}
+		$("h1").html(num2)
+	})
+})
+</script>
+</head>
+<body>
+	<p>글쓰기</p>
+	<h1>100</h1>
+	<textarea rows="10" cols="70">
+	
+	</textarea>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Toggle함수</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("button").click(function(){
+			$(".page").toggle("show") // show(), hide() 동시에 처리. 
+		})
+	})
+</script>
+</head>
+<body>
+	<button>Toggle Show</button>
+	<div class="page">
+		<h1>Header 태그 입니다.</h1>
+		<p> 내용 부분 입니다.</p>
+	</div>
+</body>
+</html>
