@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>숫자 야구</title>
+ <link rel=stylesheet href=https://www.w3schools.com/w3css/4/w3.css>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var trycount = 0; // 시도횟수
+	var nums = new Array(10); // 0 ~ 9까지 숫자를 배열로 저장 => 섞을 숫자
+	var answer = new Array(4); // nums 배열에서 임의의 수 4개를 저장. => 정답 
+	var inputarr = new Array(4); // 사용자가 입력한 숫자 4개 저장
+	for (var i = 0; i < nums.length; i++) { // 배열에 0 ~ 9 숫자를 대입
+		nums[i] = i;
+	}
+	for (var a = 0; a < 10000; a++) {
+		var ran = Math.floor(Math.random() * nums.length); // 0 ~ 3
+		var tmp = nums[0];
+		nums[0] = nums[ran];
+		nums[ran] = tmp;
+	}
+	for (var i = 0; i < 4; i++) {
+		answer[i] = nums[i]; // 섞은 숫자 0 ~ 9 중 0 ~ 3 에 해당하는 값 정답 배열에 저장
+		console.log(answer[i])
+	}
+	$(function() { // 페이지가 다 로딩된 후 
+		for (var i = 0; i < 4; i++) { // id가 card 인 영역에 img태그 추가
+			$("#card").append("<img width = '100' height='100' border='1' />");
+		}
+		$("#inbtn").click(function() { // 입력버튼 클릭시
+			if (!$("#userNum").val()) { // 텍스트 박스값이 null이면 
+				alert("숫자를 입력해주세요");
+				$("#userNum").focus();
+				return; // 종료
+			}
+			// 숫자 타입 체크
+			if (isNaN($("#userNum").val())) { // 텍스트 박스값이 숫자가 아니면
+				alert("숫자타입으로 입력해주세요");
+				$("#userNum").focus();
+				return;
+			}
+			if($("#userNum").val().length != 4){ // 텍스트 박스값 길이가 4가 아니면
+				alert("4자리 숫자를 입력해주세요.");
+				$("#userNum").focus();
+				return;
+			}
+			inputarr = $("#userNum").val().split(""); // 텍스트 박스 입력한값 하나하나 나눠서 배열에 저장
+			for(var v1 in inputarr){ // 사용자가 입력한 값 4자리 숫자
+				var cc = 0; 
+				for(var v2 in inputarr){ // 사용자가 입력한 값 4자리 숫자
+					if(inputarr[v1] == inputarr[v2]) cc++; // 중복된 숫자가 있으면 cc 증가
+				}
+				if(cc > 1){ // 중복된 숫자가 있으면
+					alert("중복된 숫자를 입력할 수 없습니다.");
+					$("#userNum").focus();
+					return;
+				}
+			}
+			matchingNum($("#userNum").val()); //strike, ball 설정 함수 호출 
+			$("#userNum").val("");
+		})
+		// 숫자를 입력하는 input 태그에서 enter 키가 입력된 경우
+		// 입력버튼을 클릭한 이벤트 발생하도록 설정
+		$("#userNum").keyup(function(event){ // enter 키의 ascii코드값
+			if(event.keyCode == 13){
+				$("#inbtn").click();
+			}
+		})
+	})
+	
+	// strike, ball설정 기능
+	function matchingNum(userNum){
+		var strike = 0;
+		var ball = 0;
+		for(var i = 0;i<4;i++){
+			for(var j = 0;j<4;j++){
+				if(answer[j] == inputarr[i]){ // 값이 같으면
+					if(i == j) strike++; // 자리수도 동일하면 strike 증가
+					else ball++; // 값만 동일한거면 ball증가
+				}
+			}
+		}
+		if(strike == 4){ // strike 가 4면 
+			var wrap  =document.getElementById("wrap"); // "#wrap"
+			$(wrap).append("<h1>축하합니다. 정답입니다</h1>"); // wrap 영역에 마지막 요소로 h1태그 추가
+			$("#card img").each(function(index){ // card 영역에 img태그에 반복하면서
+				$(this).attr("src", "./nums/num"+answer[index] +".jpg"); // src 속성값 지정
+				$(this).addClass("w3-circle");     // num8 -> num+answer[0]
+																	  //                        8     
+			})                                               
+			//$(wrap).append("<input type='button' value ='다시시작' onClick='javascript:location.reload()'>");
+			 $(wrap).append("<button onClick='javascript:location.reload()'>다시시작</button>");
+			 /*
+			 $("button").click(function(){
+				 location.reload();
+			 })
+			 */
+		}else{
+			strike += "S  ";
+			ball += "B  ";
+			$("#right").append("<span>"+ ++trycount+"번째 도전 : "+strike + ball+", 유저입력값 : "
+					+userNum+"</span><br>")
+		}
+	}
+	
+	
+</script>
+<style type="text/css">
+* {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+</head>
+<body>
+	<h3>숫자 야구</h3>
+	<div id="wrap" class="w3-container">
+		<div id="card"></div>
+		<div id="left">
+			<input type="text" id="userNum"> <input type="button"
+				value="입력" id="inbtn">
+		</div>
+		<div id="right"></div>
+	</div>
+</body>
+</html>
