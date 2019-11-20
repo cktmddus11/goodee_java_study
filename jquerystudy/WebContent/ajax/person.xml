@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<people>
+	<person>
+		<name>홍길동</name><gender>남자</gender><part>기타</part>
+	</person>
+	<person>
+		<name>차승연</name><gender>여자</gender><part>바이올린</part>
+	</person>
+	<person>
+		<name>정진영</name><gender>남자</gender><part>작곡</part>
+	</person>
+</people>

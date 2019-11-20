@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>xml 연습</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function(){
+		$.ajax("person.xml", {
+			success : function(data){
+				// xml을 jquery를 이용하면 알아서 파싱해서 가져옴 
+				// $(data) : root태그 가져옴 
+				$(data).find("person").each(function(){
+					// $(this) : <person> ... </person> 반복하면서 person태그를 가져옴 
+					name = "<li>"+$(this).find("name").text()+"</li>"; // 첫번째 person태그의 name 값 
+					gender = "<li>"+$(this).find("gender").text()+"</li>";
+					part = "<li>"+$(this).find("part").text()+"</li>";
+					$("#person").append("<ul>"+name+gender+part+"</ul>")
+				}) 
+				
+			},
+			error : function(e){
+				alert("서버오류 : "+e.status);
+			}
+		})
+		return false;
+	})
+})
+</script>
+</head>
+<body>
+	<button id="btn">xml 연습</button>
+	<div id="person"></div>
+</body>
+</html>

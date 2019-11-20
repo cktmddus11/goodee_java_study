@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jquery ajax 예제</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#submit").click(function(){
+		console.log($("#id").val(), $("#pass").val());
+		var data = {id : $("#id").val(), password : $("#pass").val()};
+		$.ajax({
+			url : "ajax2.jsp", // 요청페이지 설정
+			type:"POST", // method 방식 
+			data : data,  // 파라미터 설정
+			success : function(data){ // 요청된 파일을 처리하고 온 페이지 data 
+				// data :  <h1>반갑습니다 ${rs.rows[0].name}님</h1>
+				$("#message").append(data);
+			},
+			error : function(request, status, e){
+				alert("서버오류 : "+e.status);
+			}
+		})
+		return false; // form 요청되지 않게 
+		// 기본이벤트의 기능 무시
+	})
+	
+	$("#submit").click(function(){
+		console.log($("#id").val(), $("#pass").val());
+		var data = {id : $("#id").val(), password : $("#pass").val()};
+		$.ajax({
+			url : "ajax2.jsp", // 요청페이지 설정
+			type:"POST", // method 방식 
+			data : data,  // 파라미터 설정
+			success : function(data){ // 요청된 파일을 처리하고 온 페이지 data 
+				// data :  <h1>반갑습니다 ${rs.rows[0].name}님</h1>
+				$("#message").html(data);
+			},
+			error : function(request, status, e){
+				alert("서버오류 : "+e.status);
+			}
+		})
+		return false; // form 요청되지 않게 
+		// 기본이벤트의 기능 무시
+	})
+	$("#btn").click(function(){
+		var data = {id : $("#id").val(), password : $("#pass").val()};
+		$.ajax({
+			url : "ajax3.jsp", // 요청페이지 설정
+			type:"POST", // method 방식 
+			data : data,  // 파라미터 설정
+			success : function(data){ 
+				$("#message").html(data);
+				if($("h1").is(".find")){
+					$("#id").val("");
+				}
+			},
+			error : function(request, status, e){
+				alert("서버오류 : "+e.status);
+			}
+		})
+		return false;
+	})
+	
+})
+</script>
+</head>
+<body>
+<!-- -
+1.  id, pass 두개의 파라미터를 ajax2.jsp 페이지로 전송하기
+2. ajax2.jsp 페이지에서 member 테이블에서 id와 비밀번호 일치여부 검증.
+   jstl 이용하기
+   로그인 성공 : 반갑습니다. name 님 내용을 id=message 부분에 출력
+   로그인 실패 : 아이디 또는 비밀번호가 틀립니다. 내용을 id=message 부분에 출력
+
+
+	"아이디 중복" 버튼 클릭
+	1. id 파라미터 ajax3.jsp 페이지로 전송
+	    id 가 존재 : 존재하는 아이디 입니다.  id=message 부분에 출력
+	    id가 없으면 : 회원가입을 할 수 있는 아이디 입니다.   id=message 부분에 출력
+
+ -->
+ <form name = "f">
+ 	<input type="text" id="id"> <button id="btn">아이디중복</button>	<br>
+ 	<input type="password" id = "pass"><br>
+ 	<input type="submit" value="로그인" id = "submit"><br>
+ 
+ </form>
+ <div id = "message"></div>
+
+</body>
+</html>
