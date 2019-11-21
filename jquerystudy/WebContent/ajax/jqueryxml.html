@@ -25,13 +25,55 @@ $(function(){
 				alert("서버오류 : "+e.status);
 			}
 		})
-		return false;
+	})
+	$("#allbtn").click(function(){
+		$.ajax("address.xml", {
+			success : function(data){
+				state = "<ul>";
+				$(data).find("state").each(function(){
+					//$("#state").append("<li>"+$(this).text()+"</li>");
+					state += "<li>"+$(this).text()+"</li>"
+				})
+				$("#state").append(state+"</ul>");
+				//$("#state").append("</ul>");
+			}, 
+			error : function(e){
+				alert("서버오류 : "+e.status);
+			}
+		})
 	})
 })
+
+	function stateprint(st){
+		$("#state").html("");
+		$.ajax("address.xml", {
+			success : function(data){
+				$("#state").append("<ul>"); // ul 안닫아주면 알아서 html파싱때ㄴ문에 위에서 바로 닫아버림
+				// 변수선언해서 html()사용하면됨 
+				$(data).find(st).find("state").each(function(){
+					// states에서 north 를 찾고 거기서 state자식을 찾음 children()도 가능하겟다
+					// 자식 3개 가져오겟네
+					$("#state").append("<li>"+$(this).text()+"</li>")
+					// $(this) : state         $(this).text() : 강북구
+				})
+				$("#state").append("</ul>")
+			},
+			error : function(e){
+				alert("서버오류 : "+e.status);
+			}
+		})
+	}
 </script>
 </head>
 <body>
 	<button id="btn">xml 연습</button>
 	<div id="person"></div>
+	<br>
+	<button id="allbtn">전체 구</button><br><br>
+	<button onclick="stateprint('east')">동쪽구</button>
+	<button onclick="stateprint('west')">서쪽 구</button>
+	<button onclick="stateprint('south')">남쪽구</button>
+	<button onclick="stateprint('north')">북쪽구</button>		
+	<div id="state"></div>	
 </body>
 </html>

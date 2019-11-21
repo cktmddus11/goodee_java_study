@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Json 연습</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#jsonbtn").click(function(){
+		$.ajax({
+			url : "person.jsp", 
+			success : function(data){
+				var person = JSON.parse(data); // person : 배열 객체 
+				$.each(person, function(index, item){ // person 객체안에 item 한개 가져옴 
+					// 객체 안에 name, gender, part 키쌍 있는 json 타입 값 가져오는거
+					$("#result").append("<h3>"+item.name+":"+item.gender+":"+item.part+"</h3>");
+				})
+			}
+		})
+	})
+	$("#housebtn").click(function(){
+		$.ajax({
+			url : "house.jsp", 
+			success : function(data){ //data ; house.jsp 내용 그대로 가져옴
+			// parse : 파싱 => json 형식으로 data를 파싱해
+			// xml은 DOW형식 또는 SAX 형식(xml 문서를 하나의 문자열로)으로 파싱해오는거 
+				var house = JSON.parse(data) // *** house map객체값이 키 : properties, 값 : 배열 요소 3개 
+				// 배열 요소 3개는 객체의 형태로  address, price, comment 키 속성들이있는거
+				html = "<table border='1'>";
+				html+="<tr><td>주소</td><td>가격</td><td>특징</td></tr>";
+				/* for(var i = 0;i<house.properties.length;i++){
+					html += "<tr><td>"+house.properties[i].address+"</td><td>"+house.properties[i].price+"</td><td>"+house.properties[i].comment+"</td></tr>"
+				} */
+				$.each(house.properties, function(index, item){ // $.each : 리스트 또는 배열 또는 객체 
+					// house : 안에 객체를 접근하려면 키로 접근해야됨, 
+					// house.properties 그거에 아이템(json타입) 한개씩 가져옴
+					// *** item 에는 한개씩 json 타입객체를 가지고 있는거!!!!!!
+						html += "<tr><td>"+item.address+"</td><td>"+item.price+"</td><td>"+item.comment+"</td></tr>"
+				})				
+				$("#house").append(html+"</table>");
+			}
+		})
+	})
+})
+</script>
+</head>
+<body>
+	<button id="jsonbtn">JSON 연습</button>
+	<div id  = "result"></div>
+	<br><br>
+	<button id="housebtn">House 정보</button>
+	<div id  = "house"></div>
+	
+</body>
+</html>
