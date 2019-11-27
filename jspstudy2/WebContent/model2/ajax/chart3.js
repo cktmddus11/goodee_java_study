@@ -1,0 +1,116 @@
+
+var config = {
+		type: 'line',
+		data: {
+			//labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			labels: ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2'],
+			datasets: [{
+				label: 'My First dataset',
+				backgroundColor: window.chartColors.red,
+				borderColor: window.chartColors.red,
+				fill: false, // 선아래부분 색 안칠하기?
+				data: [ // 데이터는 평균평점만 가져오고 
+					// 학년/학기 갯수만큼 해주면 되겟네 
+			/* 		randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor() */
+					4.5, 
+					4.0,
+					2.5,
+					3.5,
+					3.0,
+					4.0
+				],
+			}]
+		},
+		options: {
+			responsive: false,
+			scales: {
+				yAxes: [{
+					ticks: {
+						//beginAtZero: true,
+						min : 0.0, 
+						max : 5.0,
+						stepSize : 0.5,
+						fontSize : 14,
+					}
+				}]
+			}
+		}
+	};
+var MONTHS = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월','11월', '12월'];
+var color = Chart.helpers.color; // 차트 색깔 객체 가져옴
+var barChartData = {
+		labels : MONTHS,  // X축
+		//labels : ['1월', '2월', '3월', '4월', '5월', '6월', '7월'], // X축
+		datasets: [{ // 데이터 부분
+			label: 'Dataset 1',      // 1학기, 2학기 이런거       
+											// 색깔 객체 빨간색을  투명도를 조절해서 rgb로 가져옴
+			//backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+			backgroundColor: "#FF90FF", // 막대그래프 색상
+			//borderColor: window.chartColors.red, 
+			borderColor: "#FF90FF", // 막대 그래프 테두리 색상
+			borderWidth: 1, // 막대그래프 테두리 두께
+			data: [
+				 // 여기다 값 써주면 됨
+				/* randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor() */
+				4.5, 
+				4.0,
+				2.5,
+				3.5,
+				3.0,
+				4.0,
+				3.5
+			]
+		}/* , {
+			label: 'Dataset 2',
+			backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+			borderColor: window.chartColors.blue,
+			borderWidth: 1,
+			data: [
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor()
+			]
+		} */]
+
+	};
+
+
+window.onload = function() {
+	var ctx = document.getElementById('linecanvas').getContext('2d');
+	window.myLine = new Chart(ctx, config);
+	// ctx : 그래프를 그리기 위한 그림판을 지정해줌
+	var a = document.getElementById('barcanvas').getContext('2d');
+	 // 차트 그리기 위한 데이터
+	                                    // ctx 그래프 위치 지정
+	window.myBar = new Chart(a, { // 여기만 바꾸면 같은 데이터를 차트 바꿀수있음
+		type: 'line', // 막대그래프
+		data: barChartData, // 데이터
+		options: { // 차트 옵션
+			responsive: true, // 반응형 웹
+			legend: { // 차트 계열 
+				position: 'top', 
+			},
+			title: { // 차트 제목
+				display: true,
+				text: '막대그래프'
+			}
+		}
+	});
+
+};

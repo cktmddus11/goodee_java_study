@@ -100,6 +100,9 @@ html, body, h1, h2, h3, h4, h5, h6 {
 			<div class="w3-twothird w3-container">
 				 <decorator:body />
 			</div>
+			<br> <!--  차트 출력 영역 -->
+			
+			
 			<div class="w3-third w3-container">
 				<p class="w3-border w3-padding-large w3-padding-32 w3-center">
 				<img src="http://img.hani.co.kr/imgdb/resize/2018/0313/00500561_20180313.JPG" style="height: 50%;width: 50%;" ></p>

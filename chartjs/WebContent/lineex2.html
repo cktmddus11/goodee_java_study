@@ -18,7 +18,7 @@
 		<canvas id="canvas"></canvas>
 	</div>
 	<script>
-	var MONTHS = ['1월', '2월', '3월', '4월', '5월', '6월', '7월'];
+	var MONTHS = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
 	 var lineChartData = {
 			 labels : MONTHS, 
 			 datasets : [{ // 데이터 부분
@@ -47,7 +47,7 @@
 			var ctx = document.getElementById('canvas').getContext('2d');
 			window.myBar = new Chart(ctx, {
 				type  :'line', 
-				data : lineChartData,
+				data : lineChartData,  // 데이터 부분
 				options : {
 					responsize : true,  //반응형 데이터
 					legned : {position : 'top'}, 
