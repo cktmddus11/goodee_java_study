@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>선 그래프</title>
+<script type="text/javascript" src = "http://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+<body>
+	<div style="width:75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<script>
+	var MONTHS = ['1월', '2월', '3월', '4월', '5월', '6월', '7월'];
+	 var lineChartData = {
+			 labels : MONTHS, 
+			 datasets : [{ // 데이터 부분
+				  label : '영업부 실적',
+				  fill : false,
+				  borderColor: "#FF90FF", 
+				  borderWidth: 1,
+				  data : [10, 15, 25, 55, -25, -65, 30]
+			 }, {
+				 label : '총무부 실적',
+				  fill : false,
+				  borderColor: "#0000FF", 
+				  borderWidth: 1,
+				  data : [3, 8, 18, 15, -8, -18, 50]
+			 },{
+				label : '기획부 실적', 
+				  fill : false,
+				  borderColor: "#0000FF", 
+				  borderWidth: 1,
+				  data : [23, 15, 25, 35, 25, 62, 10]
+			 }]
+			 
+	 };
+	 
+	 window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myBar = new Chart(ctx, {
+				type  :'line', 
+				data : lineChartData,
+				options : {
+					responsize : true,  //반응형 데이터
+					legned : {position : 'top'}, 
+					title : {
+						display : true,
+						text : '선 그래프 연습'
+					},
+					tooltips : {
+						mode : 'index', 
+						intersect : true
+					}
+				}
+			})
+			
+	 }
+	</script>
+</body>
+</html>

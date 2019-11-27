@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>선 그래프</title>
+<script type="text/javascript" src = "http://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+<body>
+	<div style="width:75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<script>
+	
+	var config = {
+			type: 'line',
+			data: {
+				//labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2'],
+				datasets: [{
+					label: 'My First dataset',
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
+					fill: false, // 선아래부분 색 안칠하기?
+					data: [ // 데이터는 평균평점만 가져오고 
+						// 학년/학기 갯수만큼 해주면 되겟네 
+				/* 		randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor() */
+						4.5, 
+						4.0,
+						2.5,
+						3.5,
+						3.0,
+						4.0
+					],
+				}]
+			},
+			options: {
+				responsive: false,
+				scales: {
+					yAxes: [{
+						ticks: {
+							//beginAtZero: true,
+							min : 0.0, 
+							max : 5.0,
+							stepSize : 0.5,
+							fontSize : 14,
+						}
+					}]
+				}
+			}
+		};
+	window.onload = function() {
+		var ctx = document.getElementById('canvas').getContext('2d');
+		window.myLine = new Chart(ctx, config);
+	};
+
+	</script>
+</body>
+</html>

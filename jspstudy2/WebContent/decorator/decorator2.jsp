@@ -17,7 +17,24 @@
 	href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){ // 문서가 로드되자 마자
+		exchangeRate(); // 함수 호출
+		setInterval(exchangeRate, 1000 * 60);
+	})
+	function exchangeRate(){
+		$.ajax("${path}/model2/ajax/exchange2.do", {
+			success : function(data){
+				$("#exchange").html(data);
+			},
+			error : function(e){
+				alert("서버 오류 : "+e.status);
+			}
+		})
+	}
+</script>
 <style>
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;
@@ -61,6 +78,15 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		</h4>
 		<a class="w3-bar-item w3-button w3-hover-black" href="${path}/model2/member/main.me">회원관리</a>
 		 <a class="w3-bar-item w3-button w3-hover-black" href="${path}/model2/board/list.do">게시판</a>
+		
+		
+		<br>
+		<br>
+		<div class="w3-container">
+			<div class="w3-clear"></div>
+			<div id = "exchange"></div>
+		</div>
+
 	</nav>
 
 	<!-- Overlay effect when opening sidebar on small screens -->
