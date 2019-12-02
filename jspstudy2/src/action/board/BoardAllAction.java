@@ -372,6 +372,7 @@ public class BoardAllAction {
 	}
 	public ActionForward graph(HttpServletRequest request, HttpServletResponse response) {
 		List<Map<String, Integer>> list = dao.boardgraph();
+		System.out.println(list);
 		// json 형태로 만들어줌
 		StringBuilder json = new StringBuilder("[");
 		int i = 0;
