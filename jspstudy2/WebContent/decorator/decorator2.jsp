@@ -19,7 +19,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" 
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(function(){ // 문서가 로드되자 마자
 		exchangeRate(); // 함수 호출
 		setInterval(exchangeRate, 1000 * 60);
@@ -34,7 +34,7 @@
 			}
 		})
 	}
-</script>
+</script> -->
 <style>
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif;

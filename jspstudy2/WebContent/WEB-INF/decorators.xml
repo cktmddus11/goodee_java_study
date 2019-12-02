@@ -15,5 +15,6 @@
 		<pattern>/model2/member/picture*</pattern> <!--  저 경로에있는거 decorate 제외하는거 -->
 		<pattern>/model2/member/upload*</pattern>
 		<pattern>/model2/ajax/*</pattern>
+		
 	</excludes>
 </decorators>

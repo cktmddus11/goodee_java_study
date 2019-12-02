@@ -370,5 +370,34 @@ public class BoardAllAction {
 		request.setAttribute("today", new Date());
 		return new ActionForward();
 	}
-
+	public ActionForward graph(HttpServletRequest request, HttpServletResponse response) {
+		List<Map<String, Integer>> list = dao.boardgraph();
+		// json 형태로 만들어줌
+		StringBuilder json = new StringBuilder("[");
+		int i = 0;
+		System.out.println(list.size());
+		for(Map<String, Integer> m : list) {
+			for(Map.Entry<String, Integer> me : m.entrySet()) {
+				if(me.getKey().equals("name"))
+					json.append("{\"name\":\""+me.getValue()+"\",");
+				if(me.getKey().equals("cnt"))
+					json.append("\"cnt\":"+me.getValue()+"}");
+			}
+			i++;
+			if(i < list.size()) json.append(",");
+		}
+		json.append("]");
+		// json 형태로 만들어줌 끝
+		request.setAttribute("json", json.toString().trim());
+		return new ActionForward();
+		
+	}
+	public ActionForward graph2(HttpServletRequest request, HttpServletResponse response) {
+		List<Map<String, Integer>> list = dao.boardgraph();
+		request.setAttribute("list", list);
+		return new ActionForward();
+	}
+	
+	
+	
 }

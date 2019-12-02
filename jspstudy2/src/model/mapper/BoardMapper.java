@@ -54,6 +54,11 @@ public interface BoardMapper {
 	
 	@Delete("delete from board where num = #{num}")
 	int delete(int num);
+
+	@Select("select name, count(*) cnt "+
+	"from board group by name "+
+			"having count(*) > 1 order by cnt desc")
+	List<Map<String, Integer>> graph();
 	
 	
 }

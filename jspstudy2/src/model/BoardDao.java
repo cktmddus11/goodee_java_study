@@ -161,5 +161,17 @@ public class BoardDao {
 		return false;
 
 	}
+	public List<Map<String, Integer>> boardgraph() {
+		SqlSession session = DBConnection.getConnection();
+		List<Map<String, Integer>> map = null;
+		try {
+			map = session.getMapper(cls).graph();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(session);
+		}
+		return map;
+	}
 
 }
