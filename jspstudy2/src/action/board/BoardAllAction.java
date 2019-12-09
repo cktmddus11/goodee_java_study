@@ -396,6 +396,7 @@ public class BoardAllAction {
 	public ActionForward graph2(HttpServletRequest request, HttpServletResponse response) {
 		List<Map<String, Integer>> list = dao.boardgraph();
 		request.setAttribute("list", list);
+		System.out.println(list);
 		return new ActionForward();
 	}
 	

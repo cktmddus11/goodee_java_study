@@ -63,6 +63,7 @@ function graphs(){
 	})
 }
 function pieGraphprint(data){
+	console.log(data);
 	// [{"name":"차승연", "cnt":10}, {"name":"차승연", "cnt":10}]
 	// data : 서버에서 전달한 JSON 형태 데이터
 	var rows = JSON.parse(data);
